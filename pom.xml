@@ -146,6 +146,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.appenders.st</groupId>
+        <artifactId>appenders-jackson-st</artifactId>
+        <version>1.0</version>
+      </dependency>
+
+      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
 	<version>${version.junit}</version>
