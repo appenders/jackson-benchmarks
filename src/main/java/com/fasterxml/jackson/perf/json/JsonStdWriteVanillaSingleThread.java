@@ -1,12 +1,12 @@
 package com.fasterxml.jackson.perf.json;
 
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.perf.WritePerfBaseFullJackson;
 import com.fasterxml.jackson.perf.model.MediaItem;
+import org.appenders.st.jackson.SingleThreadJsonFactory;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 
 @State(Scope.Thread)
 @Fork(jvmArgsAppend = {
@@ -20,11 +20,11 @@ import com.fasterxml.jackson.perf.model.MediaItem;
 //        "-XX:+UnlockExperimentalVMOptions",
 //        "-XX:+UseZGC"
 })
-public class JsonStdWriteVanilla extends WritePerfBaseFullJackson<MediaItem>
+public class JsonStdWriteVanillaSingleThread extends WritePerfBaseFullJackson<MediaItem>
 {
-    private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
+    private static final ObjectMapper JSON_MAPPER = new ObjectMapper(new SingleThreadJsonFactory());
 
-    public JsonStdWriteVanilla() {
+    public JsonStdWriteVanillaSingleThread() {
         super(JSON_MAPPER);
     }
 }
